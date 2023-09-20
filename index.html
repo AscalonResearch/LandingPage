@@ -1,0 +1,2988 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.4">
+    <meta name="description" content="Twine | Find a Friend for everything">
+    <meta property="og:title" content="Twine | Find a Friend for everything">
+    <meta property="og:description"
+          content="Twine uses AI and psychology to bring people together">
+    <meta property="og:site_name" content="Twine">
+    <link rel="icon" type="image/png" href="E:\Dropbox\Ascalon\Pictures\Logos\Logo\Ascalon_Logo_Weisz_2000x2000 - Kopie.png">
+    <script type="application/ld+json">{
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ascalon",
+        "legalName": "Ascalon GmbH",
+        "url": "https://www.twine-app.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Friedberg, Bayern",
+            "addressCountry": "Germany"
+        }
+    }</script>
+    <title>Twine | Find a Friend for everything</title>
+    <style>
+        @font-face {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html, body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Inter, Helvetica, Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Noto Color Emoji, Segoe UI Symbol, Android Emoji, EmojiSymbols, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Noto Sans, sans-serif;
+            font-size: 2vmin;
+            background: #121212;
+        }
+
+        body {
+        }
+
+        .unreleased {
+            display: none;
+            visibility: hidden;
+            height: 0;
+            width: 0;
+        }
+
+        .content-panel {
+            padding-left: 10%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .blurple {
+            color: #FFCA3A;
+        }
+
+        #nav-bar {
+            position: relative;
+            top: 2rem;
+            height: 2.1rem;
+            display: flex;
+            white-space: nowrap;
+            z-index: 1000;
+        }
+
+        #nav-links {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            float: left;
+
+            z-index: 1;
+
+            height: 2.3rem;
+
+            opacity: 0.9;
+            color: white;
+            font-weight: normal;
+            font-size: clamp(1.25rem, 2vmin, 20px);
+            cursor: pointer;
+        }
+
+        #nav-links .nav-link {
+            margin-left: 1rem;
+            margin-right: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+
+            text-shadow: 0 0 1px rgb(45, 137, 227), 0 0 3px #121212;
+        }
+
+        #nav-logo {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 150%;
+            font-weight: 800;
+            color: #FFCA3A;
+            display: flex;
+            float: left;
+            margin-right: 1rem;
+            cursor: default;
+            letter-spacing: normal;
+        }
+
+        #nav-logo .logo9 {
+            top: -0.2em;
+            left: 0.03em;
+        }
+
+        #nav-access-cta {
+
+            border-radius: 1.5rem;
+            border: 1px solid white;
+            box-shadow: 0 0 3px #FFCA3A, 0 0 5px black;
+            text-shadow: 0 0 1px rgb(255, 255, 255);
+            background: linear-gradient(to right bottom, #ffffff 0%, #FFCA3A 60%, #FFec6f 95%, #212121 100%);
+            color: #000000;
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            white-space: nowrap;
+            opacity: 0.9;
+            font-weight: bold;
+            font-size: inherit;
+            cursor: pointer;
+        }
+
+        #home-panel {
+            position: relative;
+            min-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            background: radial-gradient(60% 70% at 50% 80%, #FFBE18, rgb(21, 16, 58) 80%, rgb(21, 16, 58) 90%, rgb(19, 15, 53) 95%, rgb(8, 6, 30)); "#FFF7DB" "#FFE8AA" "#FFDA79" "#" "#"
+            margin-bottom: 2rem;
+            margin-left: 3px;
+            margin-right: 3px;
+            padding-left: calc(10% - 3px);
+            border-bottom-left-radius: 10rem;
+            border-bottom-right-radius: 10rem;
+            box-shadow: 0 0 1px rgb(255, 255, 255), 0 0 2px rgb(45, 137, 227), 0 0 1rem rgb(33, 33, 33);
+        }
+
+        .extra-panel-light {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 90%;
+            border-radius: inherit;
+        }
+
+        #home-panel .extra-panel-light {
+            border-bottom-left-radius: 10rem;
+            border-bottom-right-radius: 10rem;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #home-light-1 {
+            z-index: 0;
+            opacity: 100%;
+        }
+
+        #home-light-2 {
+            z-index: 0;
+            opacity: 100%;
+        }
+
+        #home-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+
+            align-items: flex-start;
+            justify-content: center;
+
+            z-index: 1;
+            width: 100%;
+            min-height: 90vh;
+        }
+
+        #hero-demo-graphic {
+            width: 15rem;
+        }
+
+        .logo {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: normal;
+            color: #FFCA3A!important;
+        }
+
+        .logo9 {
+            position: relative;
+            top: -0.6em;
+            left: 0.05em;
+            font-size: .65em;
+        }
+
+        .muted-cta {
+            text-shadow: 0 0 1px rgb(255, 255, 255);
+            border-radius: 1rem;
+            border: 1px solid white;
+            box-shadow: 0 0 3px rgb(45, 137, 227), 0 0 5px rgb(45, 137, 227);
+            background: linear-gradient(to right bottom, #ffffff 0%, #ccddff 60%, #aabbff 95%, #212121 100%);
+
+            white-space: nowrap;
+
+            opacity: 0.9;
+            color: black;
+            padding: 0.5rem 0.75rem;
+            min-width: 5rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        #about-get-started-cta {
+            position: relative;
+            left: 45%; /* Adjust the value to move it more to the right */
+        }
+
+
+        #hero-box {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #hero-text {
+            height: 25rem;
+            min-width: 35%;
+            max-width: 45%;
+        }
+
+        #hero-graphic {
+            height: 25rem;
+            margin-left: 3rem;
+            margin-top: 3rem;
+            max-width: 45%;
+        }
+
+        #hero-demo-graphic {
+            width: 15rem;
+        }
+
+        #tagline {
+            font-size: clamp(40px, 6.5dvmin, 100px);
+            letter-spacing: -0.1rem;
+            font-weight: 900;
+            opacity: 1;
+            color: #ffffff;
+            text-shadow: 0 0 3px #121212, 0 0 5px #121212;
+            margin-top: 2rem;
+        }
+
+        #tagline-lead {
+            white-space: nowrap;
+        }
+
+        #tagline-hook {
+            color: #FFec6f;
+            white-space: nowrap;
+        }
+
+        #subline {
+            font-size: clamp(20px, 3dvmin, 45px);
+            letter-spacing: -0.05rem;
+            font-weight: 350;
+            opacity: 1;
+            color: #ffffff;
+            text-shadow: 0 0 2px #121212, 0 0 3px #121212;
+            margin-top: 2rem;
+        }
+
+        #subline-dynamic-container {
+            display: inline-block;
+            font-size: inherit;
+            min-width: 8rem;
+            text-align: left;
+        }
+
+        .subline-emphasis {
+            color: rgb(247, 255, 155);
+            font-weight: 500;
+
+        }
+
+        #subline-suffix {
+            white-space: nowrap;
+            display: inline
+        }
+
+        .typewriter-cursor {
+            border-right: 2px solid;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .home-description {
+            font-size: clamp(1rem, 1.5vmax, 2rem);
+            font-weight: 300;
+            opacity: 1;
+            color: #ffffff;
+            text-shadow: 0 0 2px #121212, 0 0 3px #121212;
+            margin-top: 3rem;
+            max-width: 90%;
+            letter-spacing: -0.05rem;
+        }
+
+        .home-description-hook {
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 0 3px #121212, 0 0 5px #121212;
+        }
+
+        .home-ctas {
+            margin-top: 1rem;
+            white-space: nowrap;
+        }
+
+        #home-description-1 {
+            display: block;
+        }
+
+        #home-ctas-1 {
+            display: block;
+        }
+
+        #home-description-2 {
+            display: none;
+        }
+
+        #home-ctas-2 {
+            display: none;
+        }
+
+        .home-contact-cta {
+
+            text-shadow: 0 0 1px rgb(45, 137, 227), 0 0 3px rgb(45, 137, 227);
+
+            border: none;
+            background: none;
+
+            opacity: 0.9;
+            color: white;
+            white-space: nowrap;
+            min-width: 5rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #home-content-head-spacer {
+            height: 3rem;
+        }
+
+        #home-content-foot-spacer {
+            height: 3rem;
+        }
+
+        .panel-header {
+            color: white;
+            font-weight: 800;
+            font-size: 4rem;
+            letter-spacing: -0.1rem;
+            text-shadow: 0 0 3px #121212, 0 0 5px #121212;
+        }
+
+        #product-panel {
+            position: relative;
+            left: 0;
+            top: 0;
+            padding-right: 10rem;
+            padding-top: 3rem;
+            padding-bottom: 10rem;
+            opacity: 1;
+            z-index: 100;
+            overflow: hidden;
+
+            border-radius: 10rem;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 0 2px #121212, 0 0 3px #121212;
+        }
+
+        .section-box {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            position: relative;
+        }
+
+        .extra-section-light {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 90%;
+            border-radius: inherit;
+        }
+
+        .section-box-text {
+            flex: 1;
+            padding-right: 3rem;
+        }
+
+        .section-box-graphic {
+            position: relative;
+            flex: 1;
+            justify-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .section-header {
+            color: white;
+            font-weight: 700;
+            font-size: 2.25rem;
+            letter-spacing: -0.1rem;
+            text-shadow: 0 0 3px #121212, 0 0 5px #121212;
+        }
+
+        .section-subheader {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 300;
+            letter-spacing: -0.05rem;
+        }
+
+        .section-detail {
+            margin-top: 3rem;
+            max-width: 80%;
+            font-size: 1rem;
+            letter-spacing: -0.05rem;
+        }
+
+        .section-subdetail {
+            font-size: 1rem;
+        }
+
+        .section-subdetail-emphasis {
+            font-weight: 550;
+        }
+
+        .section-subdetail-nobullet {
+            padding-left: 1.3rem;
+        }
+
+        .section-subdetail ul {
+            list-style-type: none;
+            position: relative;
+            left: -1.5rem;
+        }
+
+        .section-subdetail li {
+            padding-top: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .section-detail-cta {
+
+            border-radius: 1.5rem;
+            border: 1px solid white;
+            box-shadow: 0 0 3px #FFCA3A, 0 0 5px black;
+            text-shadow: 0 0 1px rgb(255, 255, 255);
+            background: linear-gradient(to right bottom, #ffffff 0%, #FFCA3A 60%, #FFec6f 95%, #212121 100%);
+            color: #000000;
+            padding: 0.7rem;
+            white-space: nowrap;
+            opacity: 0.9;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+
+            min-width: 7rem;
+        }
+
+        .section-detail-link {
+
+            text-shadow: 0 0 1px rgb(45, 137, 227), 0 0 3px rgb(45, 137, 227);
+
+            border: none;
+            background: none;
+
+            opacity: 0.9;
+            color: white;
+            white-space: nowrap;
+            min-width: 7rem;
+            height: 2.3rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .section-spacer {
+            height: 2rem;
+        }
+
+        #section-graphic-projection {
+            min-width: 20rem;
+            min-height: 15rem;
+        }
+
+        #section-graphic-projection svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        #section-graphic-features {
+            min-width: 20rem;
+            min-height: 10rem;
+            gap: 3rem;
+            max-width: 50rem;
+        }
+
+        #section-graphic-features-works-with-label {
+
+            text-shadow: 0 0 1px rgb(45, 137, 227), 0 0 3px rgb(45, 137, 227);
+
+            border: none;
+            background: none;
+
+            opacity: 0.9;
+            color: white;
+            white-space: nowrap;
+            min-width: 7rem;
+            height: 2.3rem;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #section-graphic-features-works-with-label .logo9 {
+            position: relative;
+            top: -0.6em;
+            left: 0.1em;
+            font-size: .65em;
+        }
+
+        #section-graphic-features .works-with-item {
+            width: 2.5rem;
+            height: 2.5rem;
+            padding: 0.75rem;
+            display: inline-block;
+        }
+
+        #section-graphic-features svg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        #use-cases-panel {
+            position: relative;
+            left: 0;
+            top: 0;
+            padding-right: 10rem;
+            padding-top: 6rem;
+            padding-bottom: 3rem;
+            opacity: 1;
+            z-index: 100;
+
+            border-radius: 10rem;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 0 2px #121212, 0 0 3px #121212;
+        }
+
+        #use-cases-panel .extra-panel-light {
+            border-radius: 10rem;
+        }
+
+        #use-cases-box {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            max-width: 100vw;
+            box-sizing: border-box;
+        }
+
+        #use-cases-list {
+            flex: 1;
+            margin-right: 1rem;
+            box-sizing: border-box;
+            max-width: 50%;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 0 0 2px #121212, 0 0 3px #121212;
+        }
+
+        #use-cases-list ul {
+            list-style-type: none;
+        }
+
+        #use-cases-list li {
+            padding: 1rem;
+            margin-left: -1rem;
+            width: 15rem;
+            cursor: pointer;
+        }
+
+        #use-cases-list li.highlighted {
+            border-radius: 1rem;
+            border: 1px solid black;
+            color: black;
+            box-shadow: 0 0 3px rgb(45, 137, 227), 0 0 5px rgb(45, 137, 227);
+            text-shadow: none;
+            background: linear-gradient(to right bottom, #ffffff 0%, rgb(46, 127, 227) 95%, #212121 100%);
+        }
+
+        #use-cases-detail {
+            flex: 1;
+            margin-left: 1rem;
+            box-sizing: border-box;
+            max-width: 50%;
+        }
+
+        #how-it-works-panel {
+            position: relative;
+            left: 0;
+            top: 0;
+            padding-top: 0;
+            padding-right: 3rem;
+            padding-bottom: 5rem;
+            opacity: 1;
+            z-index: 100;
+            border-radius: 10rem;
+            font-size: 1rem;
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 0 2px #121212, 0 0 3px #121212;
+            overflow-x: clip;
+        }
+
+        #how-it-works-panel .section-box {
+        }
+
+        #how-it-works-graphic-box {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        #how-it-works-panel .panel-header {
+            text-align: center;
+        }
+
+        #how-it-works-panel .section-header {
+            font-size: clamp(1rem, 3.75vw, 3rem);
+        }
+
+        #how-it-works-panel .section-spacer {
+            height: 20rem;
+        }
+
+        #how-it-works-panel .section-box-righty .section-box-text {
+            padding-left: 3rem;
+            max-width: 650px;
+        }
+
+        #how-it-works-panel .section-box-lefty .section-box-text {
+            padding-right: 3rem;
+            max-width: 650px;
+        }
+
+        #how-it-works-panel .section-box-lefty div.section-box-text {
+            float: right;
+            clear: right;
+        }
+
+        #how-it-works-panel .section-box-graphic {
+            display: flex;
+            justify-content: center;
+        }
+
+        #how-it-works-ctas {
+            text-align: center;
+        }
+
+        #get-started-demo-cta {
+
+            text-shadow: 0 0 1px rgb(45, 137, 227), 0 0 3px rgb(45, 137, 227);
+
+            border: none;
+            background: none;
+
+            opacity: 0.9;
+            color: white;
+            white-space: nowrap;
+            min-width: 5rem;
+            height: 2.3rem;
+            margin-left: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #get-started-panel {
+            position: relative;
+            left: 0;
+            padding: 10rem;
+            opacity: 1;
+            z-index: 100;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #000000;
+            background: radial-gradient(30% 40% at 50% 50%, rgb(53, 67, 133), rgb(21, 16, 58) 70%, #121212 90%, #121212 95%, #121212);
+            margin-bottom: 2rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        #get-started-panel .panel-header {
+            font-size: 2rem;
+        }
+
+        #subvendors-panel-top-triangle {
+            background: linear-gradient(to top left, transparent 49.9%, rgb(155, 155, 155) 50%, rgb(18, 18, 18) 50.1%);
+            width: 100%;
+            height: 10rem;
+            position: absolute;
+            top: -1px; /* fixes a little seam that sometimes shows up */
+            left: 0;
+        }
+
+        #subvendors-panel-bottom-triangle {
+            background: linear-gradient(to top left, rgb(18, 18, 18) 49.9%, rgb(155, 155, 155) 50%, transparent 50.1%);
+            width: 100%;
+            height: 10rem;
+            position: absolute;
+            bottom: -1px; /* fixes a little seam that sometimes shows up */
+            left: 0;
+        }
+
+        #subvendors-panel {
+            max-width: 100vw;
+            background: #ffffff;
+            position: relative;
+            text-shadow: none;
+        }
+
+        #subvendors-panel .section-box {
+            position: relative;
+        }
+
+        #subvendors-panel .panel-header {
+            color: #000000;
+            font-size: 2em;
+            text-shadow: 0 0 1px #121212;
+        }
+
+        #for-subvendors-panel ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #for-subvendors-panel li {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .subvendors-benefit {
+            font-weight: 500;
+        }
+
+        .subvendors-benefit-detail {
+            padding-top: 0.5rem;
+            padding-bottom: 1rem;
+        }
+
+        #subvendors-ctas {
+            text-align: center;
+        }
+
+        #subvendors-graphic {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        #subvendors-contact-cta {
+
+            text-shadow: 0 0 1px #ffffff;
+
+            background: none;
+
+            opacity: 0.9;
+            color: black;
+            white-space: nowrap;
+            width: 7rem;
+            min-width: 5rem;
+            height: 2.3rem;
+            margin-left: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #about-panel {
+            position: relative;
+            left: 0;
+            top: 0;
+            padding-right: 10%;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            opacity: 1;
+            z-index: 100;
+            border-radius: 10rem;
+
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 0 2px #121212, 0 0 3px #121212;
+        }
+
+        @media (max-width: 850px) {
+            #about-panel {
+                padding-right: 3rem;
+            }
+        }
+
+        #about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+            gap: 2rem;
+            max-width: 100vw;
+        }
+
+        .about-box {
+            display: flex;
+            align-items: start;
+            padding-top: 3rem;
+        }
+
+        .about-headshot {
+            height: 10rem;
+            width: 10rem;
+            flex: 0 0 auto; /* don't grow, don't shrink, automatic basis */
+            margin-right: 1rem;
+        }
+
+        .about-headshot img {
+            height: 10rem;
+            width: 10rem;
+        }
+
+        .about-headshot-name {
+            font-weight: 600;
+            color: rgb(255, 255, 255);
+            text-shadow: 0 0 1px rgb(45, 137, 227), 0 0 3px #121212;
+            margin-bottom: 0.33rem;
+        }
+
+        .about-headshot-title {
+            font-weight: 400;
+            color: rgb(45, 137, 227);
+            text-shadow: 0 0 1px rgb(45, 137, 227), 0 0 3px #121212;
+            margin-bottom: 0.33rem;
+        }
+
+        .about-links {
+            height: 1rem;
+            width: 4rem;
+            position: relative;
+            bottom: 2rem;
+            left: 6.8rem;
+            white-space: nowrap;
+        }
+
+        .about-links img {
+            height: 1rem;
+            width: 1rem;
+        }
+
+        .about-bio {
+            flex: 1 1 auto; /* grow, shrink, automatic basis */
+            height: 8rem;
+        }
+
+        #mtp-links {
+            height: 1rem;
+            width: 4rem;
+            position: relative;
+            bottom: 2rem;
+            left: 6.9rem;
+            white-space: nowrap;
+        }
+        
+        #mtp-links-2 {
+            height: 1rem;
+            width: 4rem;
+            position: relative;
+            bottom: 2rem;
+            left: 8rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 850px) {
+            #about-panel {
+                padding-right: 3rem;
+            }
+
+            .about-bio {
+                max-width: 90%;
+            }
+        }
+
+        #about-contact-cta {
+
+            text-shadow: 0 0 1px rgb(45, 137, 227), 0 0 3px rgb(45, 137, 227);
+
+            border: none;
+            background: none;
+
+            opacity: 0.9;
+            color: white;
+            white-space: nowrap;
+            width: 7rem;
+            min-width: 5rem;
+            height: 2.3rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #about-social-links {
+            display: block;
+            float: right;
+            white-space: nowrap;
+            z-index: 1;
+            position: relative;
+            top: 0.3rem;
+        }
+
+        #about-social-links img {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        #about-logo {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: rgb(45, 137, 227);
+            cursor: default;
+        }
+
+        #about-logo .logo9 {
+            top: -0.6em;
+            left: 0.03em;
+        }
+
+        #about-header-spacer {
+            height: 1rem;
+        }
+
+        #about-team-header {
+            color: rgb(167, 167, 167);
+            text-align: center;
+            display: block;
+            font-weight: 600;
+            font-size: 1.75rem;
+        }
+
+        .wide-only {
+        }
+
+        /* landscape */
+        @media (min-aspect-ratio: 8/5) {
+
+            html, body {
+                font-size: min(1.3vmax, 20px);
+            }
+
+            #nav-links {
+                font-size: 1rem;
+            }
+
+            #hero-text {
+                min-width: unset;
+            }
+
+            #hero-graphic {
+                max-width: unset;
+                min-width: 50%;
+            }
+
+            #subline-suffix {
+                white-space: nowrap;
+                display: inline
+            }
+
+            #section-graphic-projection {
+                top: 0;
+                min-height: 12rem;
+                width: 30rem;
+                height: 10rem;
+            }
+
+            .section-box {
+                flex-direction: row;
+            }
+
+            #how-it-works-panel .section-header {
+                font-size: 2.5rem;
+            }
+
+            #how-it-works-graphic svg {
+                height: 17rem;
+            }
+        }
+
+        /*extra wide*/
+        @media (min-width: 1501px) {
+            @media (min-aspect-ratio: 10/5) {
+
+                html, body {
+                    font-size: clamp(15px, 4vmin, 23px);
+                }
+
+                #nav-links .nav-link {
+                    font-size: clamp(15px, 0.75rem, 30px);
+                }
+
+                #nav-logo {
+                    font-size: clamp(20px, 1rem, 40px);
+                }
+
+                #nav-access-cta {
+                    font-size: clamp(15px, 0.75rem, 30px);
+                }
+
+                #hero-text {
+                    min-width: 35%;
+                    max-width: 45%;
+                }
+
+                #hero-graphic {
+                    max-width: 55%;
+                    min-width: min-width: 50%;
+                    margin-left: 3rem;
+                }
+
+                #tagline {
+                    font-size: 2.5rem;
+                }
+
+                #subline {
+                    font-size: 1.5rem;
+                    max-width: 1000px;
+                }
+
+                .home-description {
+                    font-size: 1rem;
+                    max-width: 1000px;
+                }
+
+                .home-contact-cta {
+                    font-size: 0.75rem;
+                }
+
+                #home-panel .muted-cta {
+                    font-size: 0.75rem;
+                }
+
+                #how-it-works-panel .panel-header {
+                    font-size: clamp(1rem, 3.5vw, 3rem);
+                }
+
+                #how-it-works-panel .section-header {
+                    font-size: clamp(1rem, 3.5vw, 3rem);
+                }
+
+                #how-it-works-panel #how-it-works-headline.section-header {
+                    font-size: clamp(1rem, 3vw, 6vmin);
+                }
+
+                #how-it-works-panel {
+                    font-size: 1rem;
+                }
+
+                #how-it-works-graphic-box {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                #how-it-works-graphic {
+                    width: 100%;
+                }
+
+                #how-it-works-panel .section-spacer {
+                    height: 8rem;
+                }
+            }
+        }
+
+        /*wide*/
+        @media (max-width: 1500px) {
+            html, body {
+                font-size: clamp(15px, 3.5vmin, 23px);
+            }
+
+            #hero-text {
+                min-width: 35%;
+                max-width: 40%;
+            }
+
+            #hero-graphic {
+                max-width: 55%;
+                min-width: min-width: 50%;
+                margin-left: 1rem;
+            }
+
+            #tagline {
+                font-size: 2rem;
+            }
+
+            #subline {
+                font-size: 1.25rem;
+                max-width: 1000px;
+            }
+
+            .home-description {
+                font-size: 0.9rem;
+                max-width: 1000px;
+            }
+
+            #how-it-works-panel .section-header {
+                font-size: 2rem;
+            }
+        }
+
+        /*just wide*/
+        @media (max-width: 1500px) {
+            @media (min-aspect-ratio: 6/5) {
+                @media (max-aspect-ratio: 7/5) {
+                    html, body {
+                        font-size: 2vw;
+                    }
+
+                    .content-panel {
+                        padding-left: 5%;
+                    }
+
+                    #home-panel {
+                        padding-left: 5%;
+                    }
+
+                    #nav-links {
+                        font-size: 2vmax;
+                    }
+
+                    #hero-text {
+                        min-width: unset;
+                        max-width: 40%;
+                    }
+
+                    #hero-graphic {
+                        max-width: unset;
+                        min-width: 55%;
+                        margin-left: 0rem;
+                    }
+
+                    #tagline {
+                        font-size: clamp(30px, 5dvmin, 70px);
+                    }
+
+                    #subline {
+                        font-size: clamp(15px, 2.5dvmin, 45px);
+                    }
+
+                    #hero-demo-graphic {
+                        width: 15rem;
+                    }
+
+                    #how-it-works-headline {
+                        font-size: 1.8rem;
+                    }
+
+                    #product-panel .section-box {
+                        flex-direction: column;
+                    }
+
+                    .section-header {
+                        font-size: 1.8rem;
+                    }
+
+                    .section-subheader {
+                        font-size: 1rem;
+                    }
+
+                    #how-it-works-panel .section-box-text {
+                        font-size: 1rem;
+                    }
+
+                    #how-it-works-panel .section-header {
+                        font-size: 1.4rem;
+                    }
+
+                    #how-it-works-headline.section-header {
+                        font-size: 3vw;
+                    }
+
+                    #how-it-works-panel .section-box-righty .section-box-text {
+                        padding-left: 3rem;
+                    }
+
+                    #how-it-works-panel .section-box-lefty .section-box-text {
+                        padding-right: 3rem;
+                    }
+
+                    #subvendors-panel .section-box {
+                        flex-direction: column;
+                    }
+
+                    #subvendors-panel .section-box-text {
+                        padding-bottom: 1rem;
+                    }
+
+                }
+            }
+        }
+
+        /*portrait*/
+        @media (max-width: 1300px) {
+            @media (min-aspect-ratio: 3/5) {
+                @media (max-aspect-ratio: 6/5) {
+                    html, body {
+                        font-size: 2vw;
+                    }
+
+                    .wide-only {
+                        display: none;
+                        visibility: hidden;
+                    }
+
+                    .content-panel {
+                        padding-left: 5%;
+                    }
+
+                    #home-panel {
+                        padding-left: 5%;
+                    }
+
+                    #nav-links {
+                        font-size: 2vmax;
+                    }
+
+                    #hero-text {
+                        min-width: 40%;
+                        max-width: 40%;
+                    }
+
+                    #hero-graphic {
+                        min-width: 45%;
+                        max-width: 50%;
+                        margin-left: 0.5rem;
+                    }
+
+                    #hero-demo-graphic {
+                        width: 10rem;
+                    }
+
+                    #tagline {
+                        font-size: clamp(25px, 4.25dvmin, 70px);
+                    }
+
+                    #subline {
+                        font-size: clamp(15px, 2dvmin, 45px);
+                    }
+
+                    #how-it-works-panel .section-box-righty .section-box-text {
+                        max-width: unset;
+                        padding-right: unset;
+                    }
+
+                    #how-it-works-panel .section-box-lefty .section-box-text {
+                        max-width: unset;
+                    }
+
+                }
+            }
+        }
+
+        /*mobile portrait*/
+        @media (max-width: 850px) {
+            @media (max-aspect-ratio: 5/5) {
+                html, body {
+                    font-size: 1.4vmax;
+                }
+
+                .wide-only {
+                    display: none;
+                    visibility: hidden;
+                }
+
+                .content-panel {
+                    padding-left: 3rem;
+                }
+
+                .muted-cta {
+                    height: 2.5rem;
+                    font-size: 1rem;
+                    border-radius: 1.5rem;
+                }
+
+                #home-panel {
+                    border-bottom-left-radius: 6rem;
+                    border-bottom-right-radius: 6rem;
+                }
+
+                #home-panel .extra-panel-light {
+                    border-bottom-left-radius: 6rem;
+                    border-bottom-right-radius: 6rem;
+                }
+
+                #home-content {
+                    margin-top: 1rem;
+                    max-width: 95%;
+                }
+
+                #hero-box {
+                    flex-direction: column;
+                }
+
+                #nav-logo {
+                    display: none;
+                }
+
+                #nav-links {
+                    font-size: clamp(1rem, 2vw, 1rem);
+                }
+
+                #nav-links .nav-link {
+                    margin-left: 0.5rem;
+                    margin-right: 0.5rem;
+                }
+
+                #nav-link-product.nav-link {
+                    padding-left: 0;
+                    margin-left: 0.15rem;
+                }
+
+                #home-content-head-spacer {
+                    height: 0;
+                }
+
+                #hero-box {
+                    width: unset;
+                }
+
+                #hero-text {
+                    height: unset;
+                    max-width: 100%;
+                }
+
+                #tagline {
+                    font-size: clamp(2rem, 9vmin, 5rem);
+                }
+
+                #subline {
+                    font-size: clamp(1.5rem, 3.5vmin, 5rem);
+                }
+
+                #subline-suffix {
+                    white-space: nowrap;
+                    display: inline
+                }
+
+                .home-description {
+                    font-size: clamp(1rem, 1.75vmax, 2rem);
+                }
+
+                #hero-graphic {
+                    width: unset;
+                    min-width: unset;
+                    max-width: unset;
+                    margin-left: -2rem;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                #hero-demo-graphic {
+                    width: 25rem;
+                }
+
+                .home-description {
+                    min-width: unset;
+                    max-width: 95%;
+                    margin-top: 2rem;
+                }
+
+                #home-description-1 {
+                    display: none;
+                }
+
+                #home-ctas-1 {
+                    display: none;
+                }
+
+                #home-description-2 {
+                    display: unset;
+                }
+
+                #home-ctas-2 {
+                    display: unset;
+                }
+
+                .home-contact-cta {
+                    height: 3.5rem;
+                    font-size: 1rem;
+                }
+
+                #product-panel {
+                    border-radius: 6rem;
+                    padding-right: 3rem;
+                }
+
+                #product-panel .section-box {
+                    flex-direction: column;
+                }
+
+                .section-box-text {
+
+                }
+
+                .section-header {
+                    margin-top: 1rem;
+                    font-size: 1.75em;
+                }
+
+                .section-detail {
+                    margin-top: 3rem;
+                    max-width: 100%;
+                }
+
+                #section-graphic-projection {
+                    top: 0;
+                    min-height: 10rem;
+                }
+
+                #section-graphic-features {
+                    margin-top: 1rem;
+                }
+
+                #how-it-works-panel .section-box-text {
+                    text-align: center;
+                    font-size: 1rem;
+                    padding-bottom: 5rem;
+                }
+
+                #how-it-works-panel .section-box-righty {
+                    flex-direction: column-reverse;
+                }
+
+                #how-it-works-panel .section-box-lefty {
+                    flex-direction: column;
+                }
+
+                #how-it-works-panel .section-box-righty .section-box-text {
+                    padding-left: unset;
+                }
+
+                #how-it-works-panel .section-box-lefty .section-box-text {
+                    padding-right: unset;
+                }
+
+                #how-it-works-panel .section-header {
+                    text-align: center;
+                    font-size: 1.5rem;
+                }
+
+                #how-it-works-headline.section-header {
+                    font-size: 4.5vw;
+                }
+
+                #how-it-works-panel .section-spacer {
+                    height: 15rem;
+                }
+
+                #get-started-panel {
+                    padding: 3rem;
+                }
+
+                #get-started-panel .panel-header {
+                    font-size: 2rem;
+                }
+
+                #subvendors-panel .section-box {
+                    flex-direction: column;
+                }
+
+                #about-header-spacer {
+                    height: 1rem;
+                    display: block;
+                }
+            }
+        }
+
+        /* mobile landscape */
+        @media (max-width: 900px) {
+            @media (min-aspect-ratio: 8/5) {
+                html, body {
+                    font-size: clamp(11px, 1.5vmin, 20px);
+                }
+
+                #tagline {
+                    font-size: clamp(2rem, 8vmin, 5rem);
+                }
+
+                #subline {
+                    font-size: clamp(1.5rem, 3.5vmin, 5rem);
+                }
+
+                .section-detail-link {
+                    font-size: 0.8rem;
+                }
+
+                #subvendors-contact-cta {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+        /*mobile narrow*/
+        @media (max-width: 500px) {
+            @media (max-aspect-ratio: 1/2) {
+                html, body {
+                    font-size: 1.3vmax;
+                }
+
+                #home-panel {
+                    border-bottom-left-radius: 3rem;
+                    border-bottom-right-radius: 3rem;
+                }
+
+                #product-panel .section-box {
+                    flex-direction: column;
+                }
+
+                #subvendors-panel .section-box {
+                    flex-direction: column;
+                }
+
+                #get-started-panel {
+                    padding: 3rem;
+                }
+            }
+        }
+
+
+    </style>
+    <script defer data-domain="twineapp.com" src="https://plausible.io/js/script.tagged-events.js"></script>
+</head>
+<body>
+
+<div id="home-panel" class="content-panel">
+
+    <div id="nav-bar">
+        <div id="nav-links">
+            <div id="nav-logo" class="logo">Twine</div>
+            <a id="nav-link-product" class="nav-link scroll-link" href="#product-panel">Problem</a>
+            <!--<a class="nav-link scroll-link unreleased" href="#use-cases-panel">Use Cases</a>-->
+            <a class="nav-link scroll-link" href="#how-it-works-panel">How It Works</a>
+            <a class="nav-link scroll-link" href="#about-panel">About</a>
+            
+            <script src="https://embed.typeform.com/next/embed.js"></script>
+        </div>
+    </div>
+    <div id="home-light-1" class="extra-panel-light"></div>
+    <div id="home-light-2" class="extra-panel-light"></div>
+
+    <div id="home-content">
+        <div id="home-content-head-spacer"></div>
+        <div id="hero-box" style="display: flex; flex-wrap: wrap; gap: 20px;">
+          <div id="hero-text" style="flex: 1; min-width: 50%">
+              <div id="tagline">
+                  <span id="tagline-lead">Take control</span><br/>
+                  <span id="tagline-hook">of your social life</span>
+              </div>
+              <div id="subline">
+                  Find Friends and people you get along with<br>
+                  <span id="subline-dynamic-container">
+                      <span id="subline-dynamic" class="subline-emphasis">to try a new sport</span>
+                      <span class="typewriter-cursor"></span>&nbsp;
+                  </span>
+                  <span id="subline-suffix"><br>passively, automatically and without getting hurt</span>
+              </div>
+              <div id="home-description-1" class="home-description">
+                  <span class="logo">Twine</span> helps 
+                  <span class="home-description-hook">everyday people</span> to find people they get along with, so that you don't have to spend time searching. We create an AI - Clone to interact on your behalf and bring you together with people you really get along with!
+              </div>
+              <br/>
+              <div id="home-ctas-1" class="home-ctas">
+                  <button class="muted-cta" title="Get in touch" onclick="Scheduling.startUsingT9();return false;">
+                      Get in touch
+                  </button>
+              </div>
+              </div>
+              <div id="hero-graphic" style="flex: 1; min-width: 25%; max-width: 43%;">
+                  <section class="container mx-auto my-24 px-8 text-center">
+                      <h2 class="text-2xl font-semibold mb-4" style="color: white">Watch our Concept-Demo</h2>
+                      <div class="video-responsive">
+                          <iframe src="https://www.youtube.com/embed/haJo45DTFgk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      </div>
+                  </section>
+              </div>
+          </div>
+          
+          <style>
+          .video-responsive {
+              position: relative;
+              padding-bottom: 56.25%; /* 16:9 */
+              height: 0;
+              overflow: hidden;
+          }
+          .video-responsive iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+          }
+          </style>
+
+
+        <div id="home-content-foot-spacer"></div>
+    </div>
+</div>
+
+<div id="product-panel" class="content-panel">
+    <div id="product-light-2" class="extra-panel-light"></div>
+    <div class="section-box">
+        <div class="section-box-text">
+            <div class="section-header" style="white-space: nowrap">Loneliness is a significant Issue</div>
+            <div class="section-detail">
+                People are getting more isolated and alone every year. This has a significant impact on mental health and society as a whole - since <b>social connection is a basic human need</b>.
+
+                <div class="section-subdetail">
+                    <ul>
+                        <li>
+                            <svg class="svg-icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M512 64.383234C264.7878 64.383234 64.383234 264.7878 64.383234 512s200.404567 447.616766 447.616766 447.616766 447.616766-200.404567 447.616766-447.616766S759.2122 64.383234 512 64.383234zM749.24404 399.346715 490.771928 730.197844c-25.757381 32.969325-73.223154 32.730188-98.382691-0.833916L268.525094 564.127936c-14.827561-19.780982-10.813317-47.835721 8.967665-62.664303 19.780982-14.827561 47.836743-10.813317 62.664303 8.967665l101.483305 142.855154 237.057022-309.05485c15.21897-19.480527 43.349333-22.93576 62.830882-7.71679C761.008798 351.734802 764.46301 379.865166 749.24404 399.346715z"/>
+                            </svg>
+                            <span class="section-subdetail-emphasis">50% of adults</span> describe themselfes as lonely
+                        </li>
+                        <li class="section-subdetail-nobullet">The US General Surgeon speaks of a Loneliness Pandemic</li>
+                        <li>
+                            <svg class="svg-icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M512 64.383234C264.7878 64.383234 64.383234 264.7878 64.383234 512s200.404567 447.616766 447.616766 447.616766 447.616766-200.404567 447.616766-447.616766S759.2122 64.383234 512 64.383234zM749.24404 399.346715 490.771928 730.197844c-25.757381 32.969325-73.223154 32.730188-98.382691-0.833916L268.525094 564.127936c-14.827561-19.780982-10.813317-47.835721 8.967665-62.664303 19.780982-14.827561 47.836743-10.813317 62.664303 8.967665l101.483305 142.855154 237.057022-309.05485c15.21897-19.480527 43.349333-22.93576 62.830882-7.71679C761.008798 351.734802 764.46301 379.865166 749.24404 399.346715z"/>
+                            </svg>
+                            <span class="section-subdetail-emphasis">45% of people</span> have problems finding friends
+                        </li>
+                        <li class="section-subdetail-nobullet">The average American didnt make a new friend in 5 years</li>
+                        <li>
+                            <svg class="svg-icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M512 64.383234C264.7878 64.383234 64.383234 264.7878 64.383234 512s200.404567 447.616766 447.616766 447.616766 447.616766-200.404567 447.616766-447.616766S759.2122 64.383234 512 64.383234zM749.24404 399.346715 490.771928 730.197844c-25.757381 32.969325-73.223154 32.730188-98.382691-0.833916L268.525094 564.127936c-14.827561-19.780982-10.813317-47.835721 8.967665-62.664303 19.780982-14.827561 47.836743-10.813317 62.664303 8.967665l101.483305 142.855154 237.057022-309.05485c15.21897-19.480527 43.349333-22.93576 62.830882-7.71679C761.008798 351.734802 764.46301 379.865166 749.24404 399.346715z"/>
+                            </svg>
+                            <span class="section-subdetail-emphasis">People are struggling</span> to solve their problem
+                        </li>
+                        <li class="section-subdetail-nobullet">1.5 billion people are searching online using imperfect tools, jeopardizing their mental health</li>
+                    </ul>
+                </div>
+                <br/>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+
+<div id="how-it-works-panel" class="content-panel">
+    <div id="how-it-works-light-2" class="extra-panel-light"></div>
+    <div id="how-it-works-light-3" class="extra-panel-light"></div>
+    <div id="how-it-works-light-4" class="extra-panel-light"></div>
+    <div id="how-it-works-light-5" class="extra-panel-light"></div>
+    <div class="section-spacer" style="height:2em"></div>
+    <div id="how-it-works-header" class="panel-header">How It Works</div>
+    <div class="section-spacer" style="height:5em"></div>
+    <div>
+        <div id="how-it-works-headline" class="section-header" style="text-align: center;">
+            <span class="logo blurple">Twine</span>&nbsp;lets&nbsp;your&nbsp;AI&nbsp;Clone<br/>socialize&nbsp;on&nbsp;your&nbsp;behalf.
+        </div>
+        <div class="section-spacer" style="height:2em"></div>
+        <div id="how-it-works-graphic-box">
+            <div id="how-it-works-graphic">
+                <svg viewBox="0 0 955 360">
+
+                    <defs>
+                        <mask id="how-it-works-projection-line-mask">
+                            <rect id="how-it-works-projection-line-mask" x="0" y="0" height="100%" width="100%" fill="white"/>
+                        </mask>
+                        <mask id="how-it-works-screen-left-border-mask">
+                            <rect id="how-it-works-screen-left-border-mask" x="0" y="0" height="0" width="100%" fill="white"/>
+                        </mask>
+                        <mask id="how-it-works-screen-bottom-border-mask">
+                            <rect id="how-it-works-screen-bottom-border-mask" x="0" y="0" height="100%" width="0" fill="white"/>
+                        </mask>
+                        <mask id="how-it-works-screen-right-border-mask">
+                            <rect id="how-it-works-screen-right-border-mask" x="0" y="0" height="0" width="100%" fill="white" transform="scale(1,-1) translate(0,-1)"/>
+                        </mask>
+                        <mask id="how-it-works-screen-top-border-mask">
+                            <rect id="how-it-works-screen-top-border-mask" x="0" y="0" height="100%" width="0" fill="white" transform="scale(-1,1) translate(-1,0)"/>
+                        </mask>
+
+                        <mask id="how-it-works-screen-left-border-mask-2">
+                            <rect id="how-it-works-screen-left-border-mask-2" x="0" y="0" height="0" width="100%" fill="white"/>
+                        </mask>
+                        <mask id="how-it-works-screen-bottom-border-mask-2">
+                            <rect id="how-it-works-screen-bottom-border-mask-2" x="0" y="0" height="100%" width="0" fill="white"/>
+                        </mask>
+                        <mask id="how-it-works-screen-right-border-mask-2">
+                            <rect id="how-it-works-screen-right-border-mask-2" x="0" y="0" height="0" width="100%" fill="white" transform="scale(1,-1) translate(0,-1)"/>
+                        </mask>
+                        <mask id="how-it-works-screen-top-border-mask-2">
+                            <rect id="how-it-works-screen-top-border-mask-2" x="0" y="0" height="100%" width="0" fill="white" transform="scale(-1,1) translate(-1,0)"/>
+                        </mask>
+
+                    </defs>
+                    
+                    <image x="45" y="65" href="E:\Dropbox\Ascalon\Pictures\UI and Website\Bild1.png" height="150"/>
+                    <text x="0" y="260" fill="white" font-size="33" style="font-weight:600;">We simulate you</text>
+                    <text x="50" y="295" fill="#bbbbbb" font-size="30" style="font-weight:600; text-align: center;">in the app</text>
+                    
+                    
+                    <image x="400" y="20" href="E:\Dropbox\Ascalon\Pictures\UI and Website\Bild2.png" height="200"/>
+                    <text x="380" y="260" fill="white" font-size="33" style="font-weight:600;">Clones Interact</text>
+                    <text x="392" y="295" fill="#bbbbbb" font-size="30" style="font-weight:600;">in digital space</text>
+                    
+                    
+                    <image x="753" y="30" href="E:\Dropbox\Ascalon\Pictures\UI and Website\Bild3.png" height="190"/>
+                    <text x="760" y="260" fill="white" font-size="33" style="font-weight:600;">We connect</text>
+                    <text x="754" y="295" fill="#bbbbbb" font-size="30" style="font-weight:600;">who got along</text>
+                </svg>
+
+                <style>
+                    @keyframes revealLineLeftRight {
+                        from {
+                            width: 0;
+                        }
+                        to {
+                            width: 100%;
+                        }
+                    }
+
+                    @keyframes revealLineTopBottom {
+                        from {
+                            height: 0;
+                        }
+                        to {
+                            height: 100%;
+                        }
+                    }
+
+                    @keyframes dataTransferLeftRight {
+                        0% {
+                            stroke-dashoffset: -400;
+                        }
+                        100% {
+                            stroke-dashoffset: 400;
+                        }
+                    }
+
+                    @keyframes dataTransferRightLeft {
+                        0% {
+                            stroke-dashoffset: 400;
+                        }
+                        100% {
+                            stroke-dashoffset: -400;
+                        }
+                    }
+
+                    @keyframes fadeIn {
+                        from {
+                            opacity: 0;
+                        }
+                        to {
+                            opacity: 1;
+                        }
+                    }
+
+                    @keyframes brighten {
+                        from {
+                            opacity: 50%;
+                        }
+                        to {
+                            opacity: 90%;
+                        }
+                    }
+
+                    #how-it-works-graphic {
+                        text-shadow: 0 0 1px black
+                    }
+
+                    .animate #how-it-works-data-transfer-1 {
+                        animation: dataTransferLeftRight 16s linear infinite, fadeIn 2s ease-out forwards;
+                        animation-delay: 1.8s;
+                        opacity: 100%;
+                    }
+
+                    .animate #how-it-works-data-transfer-2 {
+                        animation: dataTransferRightLeft 16s linear infinite, fadeIn 2s ease-out forwards;
+                        animation-delay: 1.8s;
+                        opacity: 100%;
+                    }
+
+                    .animate #how-it-works-projection-line-1 {
+                        animation: brighten 0.1s ease-in-out infinite;
+                        animation-delay: 1.8s;
+                    }
+
+                    .animate #how-it-works-projection-line-2 {
+                        animation: brighten 0.1s ease-in-out infinite;
+                        animation-delay: 2.0s;
+                    }
+
+                    .animate #how-it-works-projection-line-3 {
+                        animation: brighten 0.1s ease-in-out infinite;
+                        animation-delay: 2.2s;
+                    }
+
+                    .animate #how-it-works-projection-line-4 {
+                        animation: brighten 0.1s ease-in-out infinite;
+                        animation-delay: 2.1s;
+                    }
+
+                    .animate #how-it-works-projection-line-mask {
+                        animation: revealLineLeftRight 3s ease-in-out forwards;
+                    }
+
+                    .animate #how-it-works-screen-left-border-mask {
+                        animation: revealLineTopBottom 1s ease-in-out forwards;
+                        animation-delay: 1.5s;
+                    }
+
+                    .animate #how-it-works-screen-bottom-border-mask {
+                        animation: revealLineLeftRight 1s ease-in-out forwards;
+                        animation-delay: 1.5s;
+                    }
+
+                    .animate #how-it-works-screen-top-border-mask {
+                        animation: revealLineLeftRight 1s ease-in-out forwards;
+                        animation-delay: 1.5s;
+                        transform: scale(-1, 1) translate(-100%, 0)
+                    }
+
+                    .animate #how-it-works-screen-right-border-mask {
+                        animation: revealLineTopBottom 1s ease-in-out forwards;
+                        animation-delay: 1.9s;
+                        transform: scale(1, -1) translate(0, -100%)
+                    }
+
+                    .animate #how-it-works-screen-left-border-mask-2 {
+                        animation: revealLineTopBottom 2s ease-in-out infinite;
+                        animation-delay: 4.5s;
+                    }
+
+                    .animate #how-it-works-screen-bottom-border-mask-2 {
+                        animation: revealLineLeftRight 2s ease-in-out infinite;
+                        animation-delay: 4.5s;
+                    }
+
+                    .animate #how-it-works-screen-top-border-mask-2 {
+                        animation: revealLineLeftRight 2s ease-in-out infinite;
+                        animation-delay: 4.5s;
+                        transform: scale(-1, 1) translate(-100%, 0)
+                    }
+
+                    .animate #how-it-works-screen-right-border-mask-2 {
+                        animation: revealLineTopBottom 2s ease-in-out infinite;
+                        animation-delay: 5.4s;
+                        transform: scale(1, -1) translate(0, -100%)
+                    }
+
+                    .animate #how-it-works-screen {
+                        animation: fadeIn 1s ease-in-out forwards;
+                        animation-delay: 1.5s;
+                    }
+
+                    @keyframes focusIn {
+                        from {
+                            filter: blur(10px);
+                            opacity: 0;
+                        }
+                        to {
+                            filter: blur(0);
+                            opacity: 90%;
+                        }
+                    }
+
+                    .animate #how-it-works-projection {
+                        animation: focusIn 0.3s ease-in forwards;
+                        animation-delay: 2.5s;
+                    }
+
+                    .animate #how-it-works-projection-secure {
+                        animation: focusIn 0.3s ease-in forwards;
+                        animation-delay: 2.5s;
+                    }
+                </style>
+
+                <script>
+                    (function () {
+                        var graphic = document.getElementById("how-it-works-graphic");
+                        var observer = new IntersectionObserver(function (entries) {
+                            entries.forEach(function (entry) {
+                                // If the element is visible
+                                if (entry.isIntersecting) {
+                                    graphic.classList.add('animate');
+                                } else {
+                                    graphic.classList.remove('animate');
+                                }
+                            });
+                        });
+
+                        // Start observing
+                        observer.observe(graphic);
+                    })();
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="section-spacer"></div>
+    <div class="section-box section-box-righty" id="how-it-works-section-use-app-through-appliance">
+        <div id="how-it-works-section-use-app-through-appliance-light-2" class="extra-section-light"></div>
+        <div class="section-box-graphic" style="position:relative">
+            <div id="use-app-through-appliance-graphic" style="position:relative;height:22rem;width:26rem;">
+              <div style="width: 645px; height: 500px; position: relative;">
+                  <img src="E:\Dropbox\Ascalon\Pictures\UI and Website\RoomsAndRolesTransparent.png" alt="Description of Image" style="width: 100%; height: 100%; object-fit: fill; position: absolute; top: 0; left: 0;">
+              </div>
+            </div>
+        </div>
+        <div class="section-box-text">
+            <div class="section-header">
+                <br class="wide-only"/>Rooms and Roles<br class="wide-only"/><br/><br/>
+            </div>
+            <div class="section-subheader">Users can search for anyone and in any context they like. Never let yourself be constrained by the Interests of your friends.<br></div>
+        </div>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <div class="section-box section-box-lefty" id="how-it-works-section-integrations">
+
+        <div class="section-box-text">
+            <div class="section-header">
+                Find the best people for you
+            </div><br><br>
+            <div class="section-subheader">Users will get informed about each other to make the best decision and meet the people psychologically compatible for them.<br></div>
+        </div>
+        <div class="section-box-graphic" id="integrations-graphic">
+            <div style="position:relative;height:22rem;width:26rem;">
+              <div style="width: 303px; height: 500px; position: relative;">
+                  <img src="E:\Dropbox\Ascalon\Pictures\UI and Website\abreTransparent.png" alt="Description of Image" style="width: 100%; height: 100%; object-fit: fill; position: absolute; top: 0; left: 0;">
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-spacer"></div>
+    <div class="section-box section-box-righty" id="how-it-works-section-data-sharing">
+        <div class="section-box-graphic">
+            <div style="position:relative;height:22rem;width:26rem;">
+              <div style="width: 634px; height: 500px; position: relative;">
+                  <img src="E:\Dropbox\Ascalon\Pictures\UI and Website\dpsengTransparent.png" alt="Description of Image" style="width: 100%; height: 100%; object-fit: fill; position: absolute; top: 0; left: 0;">
+              </div>
+            </div>
+        </div>
+        <div class="section-box-text">
+            <div class="section-header">
+                Use the best support features to form lasting connections!<br/><br/>
+            </div>
+            <div class="section-subheader">Use our <b>specalized AI models</b> to have the best meet-ups and conversations that all of you will love. 
+            </div>
+        </div>
+    </div>
+
+    <div class="section-spacer"></div>
+    
+    <div class="section-box section-box-righty" id="how-it-works-section-data-sharing">
+        <div class="section-box-graphic">
+            <div style="position:relative;height:26rem;width:13rem;">
+              <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="375" height="687" src="https://app.uizard.io/p/e2e1b5fe/embed" allowfullscreen data-external="1"></iframe>
+            </div>
+        </div>
+        <div class="section-box-text">
+            <div class="section-header">
+                Use the best support features to form lasting connections!<br/><br/>
+            </div>
+            <div class="section-subheader">Use our <b>specalized AI models</b> to have the best meet-ups and conversations that all of you will love. 
+            </div>
+        </div>
+    </div>
+
+    <div class="section-spacer" style="height:3rem;"></div>
+</div>
+
+<div id="subvendors-panel" class="content-panel">
+    <div id="subvendors-panel-top-triangle">
+        <div></div>
+    </div>
+    <div class="panel-header" style="padding-top:12rem;text-shadow: none;">You can <span style="text-decoration: underline;">also</span> use <span class="logo" style="font-size:105%;">Twines</span> Matching Capabilities <br
+            class="wide-only"/>for your business <span
+                style="white-space: nowrap">or Organisation</span>.
+    </div>
+    <div class="section-spacer"></div>
+    <div class="section-box">
+        <div id="subvendors-text" class="section-box-text">
+            <span class="subvendors-benefit"><span style="font-weight:900">Minimize Conflicts and Friction through well fitting people.</span></span>
+            <br/>
+            <div>
+                <ul>
+                    <li><span class="subvendors-benefit">Find great Roommates</span><br/>
+                        <div class="subvendors-benefit-detail">Use our Models and Data to find a flat in any city your like with roommates you will love.</div>
+                    </li>
+                    <li><span class="subvendors-benefit">Do effective therapy</span><br/>
+                        <div class="subvendors-benefit-detail">Many Therapys fail due to lack of understanding between patient and therapist. Use our algorithm to avoid that.</div>
+                    </li>
+                    <li><span class="subvendors-benefit">Make better hiring decisions</span><br/>
+                        <div class="subvendors-benefit-detail">Simulate how new hires would fit in the team, instead of blindly trying.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="subvendors-graphic" class="section-box-graphic">
+            <svg viewBox="0 0 525 230" style="height:100%;width:100%;">
+                <defs>
+                    <mask id="subvendors-projection-line-mask">
+                        <rect id="subvendors-projection-line-mask" x="0" y="0" height="100%" width="100%" fill="white"/>
+                    </mask>
+                    <mask id="subvendors-screen-left-border-mask">
+                        <rect id="subvendors-screen-left-border-mask" x="0" y="0" height="0" width="100%" fill="white"/>
+                    </mask>
+                    <mask id="subvendors-screen-bottom-border-mask">
+                        <rect id="subvendors-screen-bottom-border-mask" x="0" y="0" height="100%" width="0" fill="white"/>
+                    </mask>
+                    <mask id="subvendors-screen-right-border-mask">
+                        <rect id="subvendors-screen-right-border-mask" x="0" y="0" height="0" width="100%" fill="white" transform="scale(1,-1) translate(0,-1)"/>
+                    </mask>
+                    <mask id="subvendors-screen-top-border-mask">
+                        <rect id="subvendors-screen-top-border-mask" x="0" y="0" height="100%" width="0" fill="white" transform="scale(-1,1) translate(-1,0)"/>
+                    </mask>
+
+                    <mask id="subvendors-screen-left-border-mask-2">
+                        <rect id="subvendors-screen-left-border-mask-2" x="0" y="0" height="0" width="100%" fill="white"/>
+                    </mask>
+                    <mask id="subvendors-screen-bottom-border-mask-2">
+                        <rect id="subvendors-screen-bottom-border-mask-2" x="0" y="0" height="100%" width="0" fill="white"/>
+                    </mask>
+                    <mask id="subvendors-screen-right-border-mask-2">
+                        <rect id="subvendors-screen-right-border-mask-2" x="0" y="0" height="0" width="100%" fill="white" transform="scale(1,-1) translate(0,-1)"/>
+                    </mask>
+                    <mask id="subvendors-screen-top-border-mask-2">
+                        <rect id="subvendors-screen-top-border-mask-2" x="0" y="0" height="100%" width="0" fill="white" transform="scale(-1,1) translate(-1,0)"/>
+                    </mask>
+
+                </defs>
+
+                <line x1="277" y1="6" x2="276" y2="124" style="stroke:rgb(255,255,255);stroke-width:1;" mask="url(#subvendors-screen-left-border-mask-2)"/>
+                <line x1="276" y1="124" x2="389" y2="155" style="stroke:rgb(255,255,255);stroke-width:1;" mask="url(#subvendors-screen-bottom-border-mask-2)"/>
+                <line x1="389" y1="155" x2="387" y2="36" style="stroke:rgb(255,255,255);stroke-width:1;" mask="url(#subvendors-screen-right-border-mask-2)"/>
+                <line x1="387" y1="36" x2="277" y2="6" style="stroke:rgb(255,255,255);stroke-width:1;" mask="url(#subvendors-screen-top-border-mask-2)"/>
+
+                <text x="330" y="190" fill="black" font-size="23" style="font-weight:600;">We Match</text>
+                <text x="295" y="210" fill="#888888" font-size="20" style="font-weight:600;">using our AI & Data</text>
+                <image href="cloud.png" width="150" x="310" y="40"/>
+                <image href="data-secure.png" height="80" x="350" y="40"/>
+
+
+                <line id="subvendors-projection-line-1" x1="100" y1="140" x2="277" y2="6" style="stroke:rgb(200,200,200);opacity:50%;stroke-width:1;stroke-dasharray:2,2;"
+                      mask="url(#subvendors-projection-line-mask)"/>
+                <line id="subvendors-projection-line-2" x1="100" y1="140" x2="276" y2="124" style="stroke:rgb(200,200,200);opacity:50%;stroke-width:1;stroke-dasharray:2,2"
+                      mask="url(#subvendors-projection-line-mask)"/>
+                <line id="subvendors-projection-line-3" x1="100" y1="140" x2="389" y2="155" style="stroke:rgb(200,200,200);opacity:50%;stroke-width:1;stroke-dasharray:2,2"
+                      mask="url(#subvendors-projection-line-mask)"/>
+                <line id="subvendors-projection-line-4" x1="100" y1="140" x2="387" y2="36" style="stroke:rgb(200,200,200);opacity:50%;stroke-width:1;stroke-dasharray:2,2"
+                      mask="url(#subvendors-projection-line-mask)"/>
+
+                <line x1="277" y1="6" x2="276" y2="124" style="stroke:rgb(180,180,180);stroke-width:1;" mask="url(#subvendors-screen-left-border-mask)"/>
+                <line x1="276" y1="124" x2="389" y2="155" style="stroke:rgb(180,180,180);stroke-width:1;" mask="url(#subvendors-screen-bottom-border-mask)"/>
+                <line x1="389" y1="155" x2="387" y2="36" style="stroke:rgb(180,180,180);stroke-width:1;" mask="url(#subvendors-screen-right-border-mask)"/>
+                <line x1="387" y1="36" x2="277" y2="6" style="stroke:rgb(180,180,180);stroke-width:1;" mask="url(#subvendors-screen-top-border-mask)"/>
+                <polygon id="subvendors-screen" points="277,6 276,124 389,155 387,36" style="fill:rgba(128,128,128,0.5);opacity: 0"/>
+                <image id="subvendors-projection" href="projection.png" height="125" x="276" y="20" style="opacity: 0%;filter: blur(10px);"/>
+                <image id="subvendors-projection-secure" href="secure.png" height="50" x="280" y="0" style="transform: skew(0deg, 15deg);opacity: 0%;"/>
+
+                <image href="server.png" x="55" y="85" height="80"/>
+                <text x="15" y="190" fill="black" font-size="23" style="font-weight:600;">Your Organisation</text>
+                <text x="45" y="210" fill="#888888" font-size="20" style="font-weight:600;">gets the result</text>
+            </svg>
+            <style>
+                @keyframes revealLineLeftRight {
+                    from {
+                        width: 0;
+                    }
+                    to {
+                        width: 100%;
+                    }
+                }
+
+                @keyframes revealLineTopBottom {
+                    from {
+                        height: 0;
+                    }
+                    to {
+                        height: 100%;
+                    }
+                }
+
+                @keyframes brighten {
+                    from {
+                        opacity: 50%;
+                    }
+                    to {
+                        opacity: 90%;
+                    }
+                }
+
+                .animate #subvendors-projection-line-1 {
+                    animation: brighten 0.1s ease-in-out infinite;
+                    animation-delay: 1.8s;
+                }
+
+                .animate #subvendors-projection-line-2 {
+                    animation: brighten 0.1s ease-in-out infinite;
+                    animation-delay: 2.0s;
+                }
+
+                .animate #subvendors-projection-line-3 {
+                    animation: brighten 0.1s ease-in-out infinite;
+                    animation-delay: 2.2s;
+                }
+
+                .animate #subvendors-projection-line-4 {
+                    animation: brighten 0.1s ease-in-out infinite;
+                    animation-delay: 2.1s;
+                }
+
+                .animate #subvendors-projection-line-mask {
+                    animation: revealLineLeftRight 3s ease-in-out forwards;
+                }
+
+                .animate #subvendors-screen-left-border-mask {
+                    animation: revealLineTopBottom 1s ease-in-out forwards;
+                    animation-delay: 1.5s;
+                }
+
+                .animate #subvendors-screen-bottom-border-mask {
+                    animation: revealLineLeftRight 1s ease-in-out forwards;
+                    animation-delay: 1.5s;
+                }
+
+                .animate #subvendors-screen-top-border-mask {
+                    animation: revealLineLeftRight 1s ease-in-out forwards;
+                    animation-delay: 1.5s;
+                    transform: scale(-1, 1) translate(-100%, 0)
+                }
+
+                .animate #subvendors-screen-right-border-mask {
+                    animation: revealLineTopBottom 1s ease-in-out forwards;
+                    animation-delay: 1.9s;
+                    transform: scale(1, -1) translate(0, -100%)
+                }
+
+                .animate #subvendors-screen-left-border-mask-2 {
+                    animation: revealLineTopBottom 2s ease-in-out infinite;
+                    animation-delay: 4.5s;
+                }
+
+                .animate #subvendors-screen-bottom-border-mask-2 {
+                    animation: revealLineLeftRight 2s ease-in-out infinite;
+                    animation-delay: 4.5s;
+                }
+
+                .animate #subvendors-screen-top-border-mask-2 {
+                    animation: revealLineLeftRight 2s ease-in-out infinite;
+                    animation-delay: 4.5s;
+                    transform: scale(-1, 1) translate(-100%, 0)
+                }
+
+                .animate #subvendors-screen-right-border-mask-2 {
+                    animation: revealLineTopBottom 2s ease-in-out infinite;
+                    animation-delay: 5.4s;
+                    transform: scale(1, -1) translate(0, -100%)
+                }
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+
+                .animate #subvendors-screen {
+                    animation: fadeIn 1s ease-in-out forwards;
+                    animation-delay: 1.5s;
+                }
+
+                @keyframes focusIn {
+                    from {
+                        filter: blur(10px);
+                        opacity: 0;
+                    }
+                    to {
+                        filter: blur(0);
+                        opacity: 80%;
+                    }
+                }
+
+                .animate #subvendors-projection {
+                    animation: focusIn 0.3s ease-in forwards;
+                    animation-delay: 2.5s;
+                }
+
+                .animate #subvendors-projection-secure {
+                    animation: focusIn 0.3s ease-in forwards;
+                    animation-delay: 2.5s;
+                }
+            </style>
+
+            <script>
+                (function () {
+                    var svg = document.getElementById("subvendors-graphic");
+                    var observer = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            // If the element is visible
+                            if (entry.isIntersecting) {
+                                svg.classList.add('animate');
+                            } else {
+                                svg.classList.remove('animate');
+                            }
+                        });
+                    });
+
+                    // Start observing
+                    observer.observe(svg);
+                })();
+            </script>
+        </div>
+    </div>
+    <div class="section-spacer" style="height:3rem"></div>
+    <div class="section-spacer" style="height:8rem"></div>
+    <div id="subvendors-panel-bottom-triangle">
+        <div></div>
+    </div>
+</div>
+
+<div id="about-panel" class="content-panel">
+    <span class="panel-header">About <span id="about-logo" class="logo">Ascalon</span></span>
+    <div id="about-header-spacer"></div>
+    <span class="logo">Ascalon</span> is a company founded to fight loneliness and social isolation. We believe the world is a better place if everybody is surrounded by people they share a genuine connection with.
+    We believe that health, and happiness are unachievable without having fitting social fabric. Thats why we build <span class="logo">Twine</span>, the best tool to find the fitting people for life - and every occasion.
+
+    <br/><br/>
+    The company was founded in 2023, and is headquartered in Friedberg, Germany.
+
+    <br/><br/><br/> 
+    <div id="about-team" class="content-panel">
+        <div id="about-team-header">Team</div>
+        <div id="about-grid">
+            <div id="about-sv" class="about-box">
+                <div id="sv-headshot" class="about-headshot">
+                    <img src="E:\Dropbox\Ascalon\Pictures\Team-Bilder\H-SprecherAbgerundet.png">
+                    <div id="mtp-links" class="about-links">
+                        <a href="https://github.com/SValv"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" title="Simon Valverde on Github"></a>
+                        <a href="https://www.linkedin.com/in/simon-valverde-6b5529206/"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" title="Simon Valverde on LinkedIn"></a>
+                    </div>
+                </div>
+                <div id="mtp-bio" class="about-bio">
+                    <div class="about-headshot-name">Simon Valverde</div>
+                    <div class="about-headshot-title">CEO & Founder</div>
+                    He studied Data Science, Economics and Psychology in Salzburg, and then spent 13 years at Amazon.
+                </div>
+            </div>
+            <div id="about-ch" class="about-box">
+                <div id="ch-headshot" class="about-headshot">
+                    <img src="E:\Dropbox\Ascalon\Pictures\Team-Bilder\CusengAbgerundet.png">
+                    <div id="mtp-links-2" class="about-links">
+                        <a href="https://www.linkedin.com/in/salim-harms-1886a1289/"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" title="Salim Harms on LinkedIn"></a>
+                    </div>
+                </div>
+                <div id="mtp-bio" class="about-bio">
+                    <div class="about-headshot-name">Salim Harms</div>
+                    <div class="about-headshot-title">COO & Founder</div>
+                    He studied Philosophy, Politics and Economics in Salzburg, and has experience as teamlead.
+                </div>
+            </div>
+            <div id="about-sb" class="about-box">
+                <div id="sv-headshot" class="about-headshot">
+                    <img src="E:\Dropbox\Ascalon\Pictures\Team-Bilder\SebiAbgerundet.png">
+                    <div id="mtp-links" class="about-links">
+                        <a href="https://github.com/SeBaron"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" title="Sebastian Baron on Github"></a>
+                        <a href="https://www.linkedin.com/in/sebastian-baron-a27438236/"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" title="Sebastian Baron on LinkedIn"></a>
+                    </div>
+                </div>
+                <div id="mtp-bio" class="about-bio">
+                    <div class="about-headshot-name">Sebastian Baron</div>
+                    <div class="about-headshot-title">CTO & Founder</div>
+                    Sebastian is currently doing his PhD in Artificial Intelligence. He built the sleep-phase detection algorithm currently leading the field. 
+                </div>
+            </div>
+            <div id="about-rt" class="about-box">
+                <div id="rt-headshot" class="about-headshot">
+                    <img src="E:\Dropbox\Ascalon\Pictures\Team-Bilder\ReiniAbgerundetet.png">
+                    <div id="mtp-links-2" class="about-links">
+                        <a href="https://www.linkedin.com/in/reinhard-tessadri-a09a04281/"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" title="Simon Valverde on LinkedIn"></a>
+                    </div>
+                </div>
+                <div id="mtp-bio" class="about-bio">
+                    <div class="about-headshot-name">Reinhard Tessadri</div>
+                    <div class="about-headshot-title">Head Psychologist & Founder</div>
+                    He studied Psychology in Vienna and in Salzburg. He was a teaching assistant, researching and teaching psychology to other students. 
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br/>
+
+    <div>
+
+        <br/><br/><br/> 
+        <button id="about-get-started-cta" class="muted-cta" title="Get in touch" onclick="Scheduling.startUsingT9();return false;">
+            Get in touch
+        </button>
+
+        
+    </div>
+    
+</div>
+<br/>
+
+<script>
+    document.querySelectorAll(".scroll-link").forEach((link) => {
+        let target = link.getAttribute("href");
+        let targetElement = document.querySelector(target)
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            targetElement.scrollIntoView({behavior: "smooth"});
+        });
+    })
+</script>
+<script type="text/javascript">
+    function isChromeLike() {
+        // Check if the browser supports the 'chrome' property
+        if ('chrome' in window) {
+            return true;
+        }
+
+        // Check if the user agent contains 'Chrome' or 'Chromium'
+        const userAgent = navigator.userAgent.toLowerCase();
+        return userAgent.includes('chrome') || userAgent.includes('chromium');
+    }
+
+    function isAppleMobile() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent);
+    }
+
+    function useDynamic() {
+        return isChromeLike() || isAppleMobile();
+    }
+
+    class Spotlight {
+        constructor({
+                        element,
+                        dynamic = useDynamic(),
+                        x = 50,
+                        y = 50,
+                        w = 30,
+                        h = 30,
+                        minX = 0,
+                        maxX = 100,
+                        maxY = 100,
+                        minY = 0,
+                        minW = 20,
+                        maxW = 70,
+                        minH = 20,
+                        maxH = 70,
+                        maxR = 360,
+                        focus = 100,
+                        period = 4000,
+                        c1,
+                        c2,
+                        bg
+                    }) {
+            this.element = element;
+            this.dynamic = dynamic;
+
+            this.x = x;
+            this.y = y;
+            this.dx = 0;
+            this.dy = 0;
+
+            this.w = w;
+            this.h = h;
+            this.dw = 0;
+            this.dh = 0;
+
+            this.r = 0;
+            this.dr = 0;
+
+            this.minX = minX;
+            this.maxX = maxX;
+            this.minY = minY;
+            this.maxY = maxY;
+            this.minW = minW;
+            this.maxW = maxW;
+            this.minH = minH;
+            this.maxH = maxH;
+            this.maxR = maxR;
+
+            this.focus = focus;
+            this.period = period;
+
+            this.planner = null;
+            this.drawer = null;
+
+            this.c1 = c1;
+            this.c2 = c2;
+            this.bg = bg;
+        }
+
+        start() {
+            this.stop();
+            this.draw();
+            let self = this;
+            if (this.dynamic) {
+                this.drawer = requestAnimationFrame(() => self.drawAndSchedule());
+                this.planner = setInterval(() => self.plan(), self.period + Math.random() * self.period);
+            }
+            return this;
+        }
+
+        stop() {
+            cancelAnimationFrame(this.drawer);
+            clearInterval(this.planner);
+        }
+
+        plan() {
+            // Generate a random angle
+            let angle = Math.random() * 2 * Math.PI;
+
+            // Calculate the new transform
+            this.dx = Math.cos(angle) * 0.025;
+            this.dy = Math.sin(angle) * 0.025;
+
+            this.dw = Math.cos(angle) * 0.05;
+            this.dh = Math.sin(angle) * 0.05;
+
+            this.dr = Math.cos(angle) * 0.05;
+        }
+
+        draw() {
+            // Move in the direction of the vector
+            this.x = this.clamp(this.x + this.dx, this.minX, this.maxX);
+            this.y = this.clamp(this.y + this.dy, this.minY, this.maxY);
+
+            // Morph in the direction of the vector
+            this.w = this.clamp(this.w + this.dw, this.minW, this.maxW);
+            this.h = this.clamp(this.h + this.dh, this.minH, this.maxH);
+
+            // Rotate in the direction of the vector
+            this.r = this.clamp(this.r + this.dr, 0, this.maxR);
+
+            // Update the background gradient
+            let gradient = "radial-gradient(" + this.w + "% " + this.h + "% at " + this.x + "% " + this.y * 0.75 + "%, " + this.c1 + ", " + this.c2 + " " + this.focus + "%, " + this.bg + ")";
+            this.element.style.background = gradient;
+
+            if (this.r > 0) {
+                let rotation = "rotate(" + this.r + "deg)";
+                this.element.style.transform = rotation;
+            }
+        }
+
+        drawAndSchedule() {
+            this.draw();
+            let self = this;
+            requestAnimationFrame(() => self.drawAndSchedule());
+        }
+
+        // Helper function to clamp a value between min and max
+        clamp(value, min, max) {
+            return Math.min(Math.max(value, min), max);
+        }
+    }
+
+    var homeLight1 = new Spotlight({
+        element: document.getElementById("home-light-1"),
+        x: 20,
+        y: 50,
+        maxX: 50,
+        minW: 20,
+        minH: 20,
+        maxW: 70,
+        maxH: 70,
+        maxR: 0,
+        focus: 90,
+        c1: "rgb(90, 110, 200)",
+        c2: "transparent",
+        bg: "transparent"
+    }).start();
+
+    var homeLight2 = new Spotlight({
+        element: document.getElementById("home-light-2"),
+        x: 70,
+        y: 60,
+        w: 40,
+        h: 90,
+        minX: 50,
+        maxX: 80,
+        minY: 30,
+        maxY: 80,
+        minW: 20,
+        maxW: 50,
+        minH: 20,
+        maxH: 100,
+        maxR: 0,
+        focus: 50,
+        c1: "rgb(60, 60, 110)",
+        c2: "transparent",
+        bg: "transparent"
+    }).start();
+
+
+    var productLight1 = new Spotlight({
+        element: document.getElementById("product-panel"),
+        x: 20,
+        y: 50,
+        w: 40,
+        h: 60,
+        maxX: 30,
+        minW: 20,
+        minH: 20,
+        maxW: 50,
+        maxH: 70,
+        maxR: 0,
+        focus: 90,
+        c1: "#222233",
+        c2: "#121212",
+        bg: "transparent"
+    }).start();
+
+    var productLight2 = new Spotlight({
+        element: document.getElementById("product-light-2"),
+        x: 80,
+        y: 70,
+        w: 30,
+        h: 40,
+        minX: 60,
+        maxX: 70,
+        minY: 40,
+        maxY: 60,
+        minW: 20,
+        maxW: 50,
+        minH: 20,
+        maxH: 50,
+        maxR: 0,
+        focus: 50,
+        c1: "#221222",
+        c2: "#121212",
+        bg: "transparent"
+    }).start();
+
+    var useCasesLight1 = new Spotlight({
+        element: document.getElementById("use-cases-panel"),
+        x: 20,
+        y: 50,
+        w: 40,
+        h: 60,
+        maxX: 50,
+        minW: 20,
+        minH: 20,
+        maxW: 70,
+        maxH: 70,
+        maxR: 0,
+        focus: 90,
+        c1: "#111133",
+        c2: "#121212",
+        bg: "transparent"
+    }).start();
+
+
+    var useCasesLight2 = new Spotlight({
+        element: document.getElementById("use-cases-light-2"),
+        x: 80,
+        y: 70,
+        w: 30,
+        h: 50,
+        minX: 60,
+        maxX: 70,
+        minY: 40,
+        maxY: 60,
+        minW: 20,
+        maxW: 50,
+        minH: 20,
+        maxH: 50,
+        maxR: 0,
+        focus: 50,
+        c1: "#221222",
+        c2: "#121212",
+        bg: "transparent"
+    }).start();
+
+    var howItWorksLight1 = new Spotlight({
+        element: document.getElementById("how-it-works-panel"),
+        x: 90,
+        y: 50,
+        w: 40,
+        h: 50,
+        minX: 60,
+        maxX: 90,
+        maxY: 50,
+        minW: 20,
+        minH: 20,
+        maxW: 50,
+        maxH: 40,
+        maxR: 0,
+        focus: 90,
+        c1: "#222233",
+        c2: "#121212",
+        bg: "transparent"
+    }).start();
+
+    var howItWorksLight2 = new Spotlight({
+        element: document.getElementById("how-it-works-light-2"),
+        x: 20,
+        y: 60,
+        w: 30,
+        h: 20,
+        maxX: 30,
+        minY: 60,
+        minW: 30,
+        minH: 30,
+        maxW: 40,
+        maxH: 40,
+        maxR: 0,
+        focus: 90,
+        c1: "#222222",
+        c2: "#121212",
+        bg: "transparent"
+    }).start();
+
+    var howItWorksLight3 = new Spotlight({
+        element: document.getElementById("how-it-works-light-3"),
+        x: 50,
+        y: 60,
+        w: 30,
+        h: 30,
+        minX: 40,
+        maxX: 60,
+        minY: 60,
+        maxY: 65,
+        minW: 30,
+        minH: 30,
+        maxW: 35,
+        maxH: 40,
+        maxR: 0,
+        focus: 90,
+        c1: "#332288",
+        c2: "transparent",
+        bg: "transparent"
+    }).start();
+
+    var howItWorksLight4 = new Spotlight({
+        element: document.getElementById("how-it-works-light-4"),
+        x: 70,
+        y: 90,
+        w: 40,
+        h: 20,
+        minX: 60,
+        maxX: 80,
+        minY: 60,
+        maxY: 65,
+        minW: 30,
+        minH: 30,
+        maxW: 40,
+        maxH: 15,
+        maxR: 0,
+        focus: 90,
+        c1: "#5533ee",
+        c2: "transparent",
+        bg: "transparent"
+    }).start();
+
+
+    var howItWorksLight5 = new Spotlight({
+        element: document.getElementById("how-it-works-light-5"),
+        x: 0,
+        y: 100,
+        w: 30,
+        h: 20,
+        minX: 30,
+        maxX: 80,
+        minY: 80,
+        maxY: 100,
+        minW: 30,
+        minH: 30,
+        maxW: 80,
+        maxH: 25,
+        maxR: 0,
+        focus: 90,
+        c1: "#223349",
+        c2: "transparent",
+        bg: "transparent"
+    }).start();
+
+    var howItWorksUseAppThroughApplianceLight = new Spotlight({
+        element: document.getElementById("how-it-works-section-use-app-through-appliance"),
+        x: 40,
+        y: 45,
+        w: 40,
+        h: 30,
+        minX: 40,
+        maxX: 60,
+        minY: 45,
+        maxY: 80,
+        minW: 10,
+        minH: 30,
+        maxW: 40,
+        maxH: 30,
+        maxR: 0,
+        focus: 0,
+        c1: "#113355",
+        c2: "#2244ff",
+        bg: "transparent"
+    }).start();
+
+    var howItWorksDataSentToApplianceLight = new Spotlight({
+        element: document.getElementById("how-it-works-section-data-sent-to-appliance"),
+        x: 50,
+        y: 64,
+        w: 30,
+        h: 30,
+        minX: 50,
+        maxX: 55,
+        minY: 65,
+        maxY: 70,
+        minW: 20,
+        maxW: 35,
+        minH: 20,
+        maxH: 30,
+        maxR: 0,
+        focus: 0,
+        c1: "#224488",
+        c2: "#224488",
+        bg: "transparent"
+    }).start();
+
+    //
+    // var getStartedLight1 = new Spotlight({
+    //     element: document.getElementById("get-started-light-1"),
+    //     x: 70,
+    //     y: 60,
+    //     w: 40,
+    //     h: 90,
+    //     minX: 50,
+    //     maxX: 80,
+    //     minY: 30,
+    //     maxY: 80,
+    //     minW: 20,
+    //     maxW: 50,
+    //     minH: 20,
+    //     maxH: 100,
+    //     maxR: 0,
+    //     focus: 50,
+    //     c1: "rgb(60, 60, 110)",
+    //     c2: "transparent",
+    //     bg: "transparent"
+    // }).start();
+
+    var getStartedLight2 = new Spotlight({
+        element: document.getElementById("get-started-light-2"),
+        x: 40,
+        y: 65,
+        w: 60,
+        h: 80,
+        minX: 40,
+        maxX: 80,
+        minY: 65,
+        maxY: 66,
+        minW: 20,
+        maxW: 90,
+        minH: 40,
+        maxH: 80,
+        maxR: 0,
+        focus: 50,
+        c1: "rgb(80, 80, 110)",
+        c2: "transparent",
+        bg: "transparent"
+    }).start();
+</script>
+<script>
+    let words = ["to try a new sport", "for networking in your branche", "to start a buisness", "to watch Star Wars", "to try out local food", 
+    "to enjoy your passions", "to not be alone anymore", "to talk about books", "and have the same hobbies and interests", "for anything you can imagine..."];
+    let currentIndex = 0;
+    let isDeleting = true;
+    let text = "to try a new sport";
+
+    function typeWriter() {
+        let sublineDynamic = document.getElementById("subline-dynamic");
+        let currentWord = words[currentIndex % words.length];
+
+        if (isDeleting) {
+            text = currentWord.substring(0, text.length - 1);
+        } else {
+            text = currentWord.substring(0, text.length + 1);
+        }
+
+        sublineDynamic.textContent = text;
+
+        let typingSpeed = 50 - Math.random() * 30; // Random speed between 50 and 100 ms
+
+        if (!isDeleting && text === currentWord) {
+            typingSpeed = 2000; // Pause for 2 seconds at the end of a word
+            isDeleting = true;
+        } else if (isDeleting && text === "") {
+            typingSpeed = 500; // Pause for 500 ms before starting a new word
+            isDeleting = false;
+            currentIndex++;
+        }
+
+        setTimeout(typeWriter, typingSpeed);
+    }
+
+    setTimeout(typeWriter, 1000);
+</script>
+<script>
+    class UseCaseMan {
+        constructor(listSelector, detailSelector, panelSelector, idMap) {
+            this.listItems = document.querySelectorAll(listSelector);
+            this.panel = document.querySelector(panelSelector);
+            this.idMap = idMap;
+            this.intervalId = null;
+            this.paused = false;
+
+            this.listItems.forEach((item) => {
+                item.addEventListener('mouseover', () => this.highlightItem(item.id));
+            });
+
+            this.listItems.forEach((item) => {
+                item.addEventListener('click', () => this.selectItem(item.id));
+            });
+
+            this.panel.addEventListener('mouseover', () => this.pause());
+            this.panel.addEventListener('mouseout', () => this.resume());
+
+            this.start();
+        }
+
+        highlightItem(id) {
+            this.listItems.forEach(item => item.classList.remove('highlighted'));
+            document.querySelector(`#${id}`).classList.add('highlighted');
+        }
+
+        selectItem(id) {
+
+            let current = document.querySelector('.detail-content:is([selected="yes"])');
+            if (current) {
+                current.style.display = 'none';
+                current.removeAttribute("selected")
+            }
+
+            let selected = document.querySelector(`#${this.idMap[id]}`);
+            selected.style.display = 'block';
+            selected.setAttribute("selected", "yes")
+        }
+
+        start() {
+            this.highlightItem(this.listItems[0].id);
+            this.selectItem(this.listItems[0].id);
+            this.resume();
+        }
+
+        pause() {
+            clearInterval(this.intervalId);
+            this.paused = true;
+        }
+
+        resume() {
+            clearInterval(this.intervalId);
+            this.paused = false;
+            this.intervalId = setInterval(() => {
+                if (!this.paused) {
+                    let currentIndex = Array.from(this.listItems).findIndex(item => item.id === document.querySelector('.highlighted').id);
+                    let nextIndex = (currentIndex + 1) % this.listItems.length;
+                    this.highlightItem(this.listItems[nextIndex].id);
+                    this.selectItem(this.listItems[nextIndex].id);
+                }
+            }, 5000);
+        }
+    }
+
+    // NOTE: Not yet released
+    // new UseCaseMan(
+    //     '#use-cases-list li',
+    //     '#use-cases-detail .detail-content',
+    //     '#use-cases-panel',
+    //     {
+    //         'use-case-chat-ai': 'detail-chat-ai',
+    //         'use-case-privacy-gdpr': 'detail-privacy-gdpr',
+    //         'use-case-id-verification-kyc': 'detail-id-verification-kyc',
+    //         'use-case-legal-contracts': 'detail-legal-contracts',
+    //         'use-case-health-hipaa': 'detail-health-hipaa',
+    //         'use-case-bioinformatics': 'detail-bioinformatics',
+    //         'use-case-financial-services': 'detail-financial-services',
+    //         'use-case-government': 'detail-government'
+    //     }
+    // );
+</script>
+<!-- Calendly badge widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<!-- Calendly badge widget end -->
+<script>
+    let Scheduling = {
+        startUsingT9: function () {
+            Calendly.initPopupWidget({url: 'https://calendly.com/ascalon/30min?hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&background=transparent'});
+            return false;
+        },
+        bookADemo: function () {
+            Calendly.initPopupWidget({url: 'https://calendly.com/ascalon/30min?hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&background=transparent'});
+            return false;
+        },
+        chatWithT9: function () {
+            Calendly.initPopupWidget({url: 'https://calendly.com/ascalon/30min?hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&background=transparent'});
+            return false;
+        }
+    }
+</script>
+</body>
+</html>
+
+<!--
+ProFont
+MIT License
+
+Copyright (c) 2014 Carl Osterwald, Stephen C. Gilardi, Andrew Welch
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
